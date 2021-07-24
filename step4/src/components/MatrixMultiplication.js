@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { generateDotProductExercise } from '../pythonCode'
+import Matrix from './Matrix'
+import { updateMatrixCell, isMatrixEqual } from '../utils'
 
 const styles = (theme) => ({
   paper: {
@@ -19,6 +21,17 @@ const styles = (theme) => ({
   parameter: {
     width: '12ch',
     margin: theme.spacing(1)
+  },
+  exercise: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  rightAnswer: {
+    color: 'green'
+  },
+  wrongAnswer: {
+    color: 'red'
   }
 })
 
@@ -31,12 +44,14 @@ class MatrixMultiplication extends Component {
       maxNumberOfRows: 4,
       maxNumberOfColumns: 4,
       hasExercise: false,
+      isGenerating: false,
       m: 1,
       n: 1,
       p: 1,
       A: [[0]],
       B: [[0]],
-      C: [[0]]
+      C: [[0]],
+      answer: [[0]]
     }
   }
 
@@ -46,7 +61,9 @@ class MatrixMultiplication extends Component {
       .then((result) => {
         this.setState({
           ...result,
-          hasExercise: true
+          answer: result.C.map((row) => row.map((col) => '')),
+          hasExercise: true,
+          isGenerating: false
         })
         console.log(result)
       })
@@ -55,14 +72,29 @@ class MatrixMultiplication extends Component {
       })
   }
 
+  onChangeHandler = (i, j, value) => {
+    const intValue = parseInt(value)
+    if (Number.isInteger(intValue)) {
+      value = intValue
+    }
+    const answer = updateMatrixCell(this.state.answer, i, j, value)
+    this.setState({
+      answer
+    })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault()
-    this.generateExercise()
+    this.setState({
+      isGenerating: true
+    }, this.generateExercise)
   }
 
   render() {
-    const { maxNumberOfRows, maxNumberOfColumns, A, B, C } = this.state
+    const { maxNumberOfRows, maxNumberOfColumns, A, B, C, answer, hasExercise, isGenerating } = this.state
     const { classes } = this.props
+
+    const isCorrect = isMatrixEqual(C, answer)
 
     return (
       <Container maxWidth="sm">
@@ -70,14 +102,36 @@ class MatrixMultiplication extends Component {
           <form onSubmit={this.handleSubmit}>
             <TextField className={classes.parameter} type="number" value={maxNumberOfRows} label="Max Rows" />
             <TextField className={classes.parameter} type="number" value={maxNumberOfColumns} label="Max Columns" />
-            <Button type="submit" variant="outlined" color="primary" className={classes.button}>
+            <Button className={classes.button} type="submit" disabled={isGenerating}>
               New Exercise
             </Button>
           </form>
-          <div>
-              <Typography variant="body1">
-                  {JSON.stringify(A)} * {JSON.stringify(B)} = {JSON.stringify(C)}
-              </Typography>
+          <div className={classes.exercise}>
+            {hasExercise ? (
+              <>
+                <Matrix values={A} readOnly={true} />
+                <Matrix values={B} readOnly={true} />
+                <span>=</span>
+                <Matrix values={answer} readOnly={false} onChange={this.onChangeHandler} />
+              </>
+            ) : (
+              <Typography variant="body1">Click the button to generate a new exercise</Typography>
+            )}
+            {hasExercise ? (
+              <div>
+                {isCorrect ? (
+                  <Typography className={classes.rightAnswer} variant="body1">
+                    Correct
+                  </Typography>
+                ) : (
+                  <Typography className={classes.wrongAnswer} variant="body1">
+                    Incorrect
+                  </Typography>
+                )}
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </Paper>
       </Container>

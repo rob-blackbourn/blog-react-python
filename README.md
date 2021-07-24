@@ -15,3 +15,7 @@ In this step we get python running in the browser.
 
 We tidy up step 2 to provide a pretty loading screen
 and generate some matrices.
+
+# Step 4
+
+We finish the app and publish it to GitHub pages.
