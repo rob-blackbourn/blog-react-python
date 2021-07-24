@@ -14,24 +14,6 @@ I want to use he material-ui toolkit. At the time of writing 2021-07-24
 this toolkit uses React version 16, so the first thing to do is edit
 the `package.json`.
 
-Before:
-
-```json
-...
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-...
-```
-
-After:
-
 ```json
 ...
   "dependencies": {
@@ -68,31 +50,7 @@ Next we install material-ui and the roboto typeface.
 npm install @material-ui/core@^4.12 @fontsource/roboto@^4.5
 ```
 
-Now we change the source files to use these. First `index.js`:
-
-Before:
-
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-```
-
-After:
+Now we change the source files to use these. First `src/index.js`:
 
 ```javascript
 import React from 'react'
@@ -113,41 +71,13 @@ ReactDOM.render(
 reportWebVitals()
 ```
 
-Next we can remove the `index.css`.
+We've added the `roboto` typeface and added the `CssBaseline` to
+create the material-ui styles.
 
-Now we change the `app.js`.
+Next we can remove the `src/index.css`.
 
-Before:
+Now we change the `src/app.js`.
 
-```javascript
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-```
-
-After:
 
 ```javascript
 import React, { Component } from 'react'
