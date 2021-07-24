@@ -13,4 +13,5 @@ In this step we get python running in the browser.
 
 # Step 3
 
-The last step is to pretty up the application.
+We tidy up step 2 to provide a pretty loading screen
+and generate some matrices.
