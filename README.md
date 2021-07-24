@@ -1,18 +1,18 @@
-# Create a react app running python without a web server
+# Create a React app running Python as a static site
 
 ## Overview
 
-This repo shows how to create a react app that uses python that
+This repo shows how to create a React app that uses Python that
 runs as a static site. The project is broken up into four steps with a `README.md`
 in each folder. You can see the final app [here](https://rob-blackbourn.github.io/demo-react-pyodide/).
 
 ## Step 1
 
-In this [step](https://github.com/rob-blackbourn/blog-react-python/tree/master/step1) we set up a react app with material-ui.
+In this [step](https://github.com/rob-blackbourn/blog-react-python/tree/master/step1) we set up a React app with material-ui.
 
 ## Step 2
 
-In this [step](https://github.com/rob-blackbourn/blog-react-python/tree/master/step2) we get python running in the browser.
+In this [step](https://github.com/rob-blackbourn/blog-react-python/tree/master/step2) we get Python running in the browser.
 
 ## Step 3
 

@@ -6,7 +6,7 @@ more interesting.
 ## Python Code
 
 As the purpose of the app is to generate exercises for matrix
-multiplication we will need some python code to do this. We add the file
+multiplication we will need some Python code to do this. We add the file
 `src/pythonCode.js` with the following contents.
 
 ```javascript
@@ -52,7 +52,7 @@ export async function generateDotProductExercise(pyodide, maxNumberOfRows, maxNu
 }
 ```
 
-The function `dotProductExerciseCode` generates the python code.
+The function `dotProductExerciseCode` generates the Python code.
 The results are assigned to global variables. First we compute
 the random rows and columns. Then we generate the random matrices
 using `numpy`, and calculate the dot product. We set the `dtype`
@@ -60,9 +60,9 @@ of the `np.array` to `np.int32`, as the default may be `np.int64`
 which would be returned as a `BigInt` to JavaScript which would
 require an extra step of transformation.
 
-The function `generateDotProductExercise` runs the python code
+The function `generateDotProductExercise` runs the Python code
 asynchronously (so we don't block the app), and then gets the
-globals variables from the python environment. The row and column
+globals variables from the Python environment. The row and column
 counts are just integer, so no transformation is required. The
 matrices get returned as an array of `Int32Array`. We use the
 `Array.from` class method to convert these to simple arrays. Finally
@@ -259,6 +259,6 @@ Now we can take it for a spin!
 npm start
 ```
 
-Clicking the exercise button runs the python code and displays the
+Clicking the exercise button runs the Python code and displays the
 matrix multiplication. The first time we click the button there is a delay
 while `numpy` is downloaded.

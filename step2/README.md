@@ -1,9 +1,9 @@
-# Step 2 - add python
+# Step 2 - Add Python
 
-Now we have the react app setup with material-ui we can add python.
+Now we have the React app setup with material-ui we can add Python.
 
 There's a project call [pyodide](https://github.com/pyodide/pyodide)
-which has compiled python into WebAssembly. An preliminary npm package
+which has compiled Python into WebAssembly. An preliminary npm package
 has been published, but I had difficulty crating a stable app with it.
 The solution that worked best was to add a `script` tag for the CDN
 at the end of the `head` of the `public/index.html`.
@@ -20,7 +20,7 @@ at the end of the `head` of the `public/index.html`.
 This loads all of the code we need to run Python in the browser.
 The functions are the available in the `window` global object.
 
-Now we change `src/App.js` to load python.
+Now we change `src/App.js` to load Python.
 
 
 ```javascript
@@ -92,14 +92,14 @@ the `wasm` image for Python and set up the links between Python and Javascript.
 This function is asynchronous. When the promise resolves it returns the
 `pyodide` object which is our gateway to the Python WebAssembly.
 
-Using the `pyodide` object we can run python code with `pyodide.runPythonAsync`
+Using the `pyodide` object we can run Python code with `pyodide.runPythonAsync`
 passing in the code as a string. This async function returns a promise which
-resolves to the last value in the code. The code simply gets the python version
+resolves to the last value in the code. The code simply gets the Python version
 which is captured as the last value of the script. This gets set in the state
 along with the pyodide object, which we'll need later on.
 
 Finally the `render` method shows either a "loading" message, or the version
-we got from python.
+we got from Python.
 
 No we can run the app.
 

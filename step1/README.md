@@ -1,17 +1,17 @@
 # Step 1 - create the app and add material-ui
 
-Before we can add the python stuff we need to prepare the react app.
+Before we can add the Python stuff we need to prepare the React app.
 
 ## Create React App
 
-First we need to run `create-react-app` to generate our react application.
+First we need to run `create-react-app` to generate our React application.
 
 ```bash
 npx create-react-app --use-npm demo-react-pyodide
 ```
 
 I want to use he material-ui toolkit. At the time of writing 2021-07-24
-this toolkit uses react version 16, so the first thing to do is edit
+this toolkit uses React version 16, so the first thing to do is edit
 the `package.json`.
 
 Before:

@@ -5,7 +5,7 @@ the point of this is to show how to run Python in a browser
 we won't go through the details of the JavaScript here.
 
 However, what we do want to see is how to use this as a "serverless"
-app running python. One way we can do this is with GitHub pages. You
+app running Python. One way we can do this is with GitHub pages. You
 can find the final project [here](https://github.com/rob-blackbourn/demo-react-pyodide).
 
 ## Publishing to github pages.
@@ -30,9 +30,9 @@ BUILD_PATH=docs
 
 The `PUBLIC_URL` is the one provided by the GitHub Pages settings
 screen. The `BUILD_PATH` is root `docs` folder where GitHub Pages will
-look for the static site. This is the folder where react will build
+look for the static site. This is the folder where React will build
 the app.
 
 Now we can build the app. Committing and pushing to GitHub will start
 the process of creating the site. In a few minutes we should be able
-to view our react/python app running!
+to view our React/Python app running!
