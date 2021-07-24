@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import MatrixMultiplication from './components/MatrixMultiplication'
 
 const styles = (theme) => ({
   message: {
@@ -37,14 +38,14 @@ sys.version
   }
 
   render() {
-    const { version } = this.state
+    const { version, pyodide } = this.state
     const { classes } = this.props
 
     return (
       <div className={classes.message}>
         {version == null
           ? <Typography variant="h2">Loading Python</Typography>
-          : <Typography variant="h2">Version: {version}</Typography>
+          : <MatrixMultiplication pyodide={pyodide} />
         }
       </div>
     )

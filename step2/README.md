@@ -40,7 +40,8 @@ class App extends Component {
     super(props)
 
     this.state = {
-      version: null
+      version: null,
+      pyodide: null
     }
   }
 
@@ -55,7 +56,7 @@ import sys
 sys.version
 `)
           .then((version) => {
-            this.setState({ version })
+            this.setState({ version, pyodide })
           })
       })
       .catch((error) => {
@@ -94,7 +95,8 @@ This function is asynchronous. When the promise resolves it returns the
 Using the `pyodide` object we can run python code with `pyodide.runPythonAsync`
 passing in the code as a string. This async function returns a promise which
 resolves to the last value in the code. The code simply gets the python version
-which is captured as the last value of the script. This gets set in the state.
+which is captured as the last value of the script. This gets set in the state
+along with the pyodide object, which we'll need later on.
 
 Finally the `render` method shows either a "loading" message, or the version
 we got from python.
