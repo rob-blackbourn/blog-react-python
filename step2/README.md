@@ -3,7 +3,7 @@
 Now we have the React app setup with material-ui we can add Python.
 
 There's a project call [pyodide](https://github.com/pyodide/pyodide)
-which has compiled Python into WebAssembly. An preliminary npm package
+which has compiled Python into WebAssembly. A preliminary npm package
 has been published, but I had difficulty crating a stable app with it.
 The solution that worked best was to add a `script` tag for the CDN
 at the end of the `head` of the `public/index.html`.
